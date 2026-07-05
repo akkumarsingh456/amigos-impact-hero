@@ -77,21 +77,31 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "InAmigos Foundation | Uniting Minds For Change" },
+      {
+        name: "description",
+        content:
+          "InAmigos Foundation is a Central Government licensed, ISO 9001:2015 certified NGO empowering communities through education, healthcare, environment and skill development.",
+      },
+      { name: "author", content: "InAmigos Foundation" },
+      { property: "og:title", content: "InAmigos Foundation — Uniting Minds For Change" },
+      {
+        property: "og:description",
+        content:
+          "Government licensed NGO working on food, education, women empowerment, animal welfare and environment. 50,000+ meals, 20,000+ trees, 900+ women empowered.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
   shellComponent: RootShell,
