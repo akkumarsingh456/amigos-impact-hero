@@ -101,4 +101,387 @@ function Nav() {
       className={`fixed inset-x-0 top-0 z-50 transition-all ${scrolled ? "bg-white/95 shadow-lg backdrop-blur-md" : "bg-white/70 backdrop-blur"}`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:px-8">
-        <a href="#home" className="flex items-center gap-2 hover:opacity-80 transition">\n          <img src={logoAsset.url} alt=\"InAmigos\" className=\"h-10 w-auto rounded-md\" />\n          <span className=\"text-lg font-bold\">InAmigos</span>\n        </a>\n        <nav className=\"hidden items-center gap-7 md:flex\">\n          {links.map(([l, h]) => (\n            <a key={l} href={h} className=\"text-sm font-medium text-ink/80 transition hover:text-brand-red\">\n              {l}\n            </a>\n          ))}\n          <a\n            href=\"#internships\"\n            className=\"rounded-full px-5 py-2 text-sm font-semibold text-white shadow-md transition hover:scale-105\"\n            style={{ background: \"linear-gradient(90deg,#E63946,#F77F00)\" }}\n          >\n            Join Us\n          </a>\n        </nav>\n        <button className=\"md:hidden\" onClick={() => setOpen((o) => !o)} aria-label=\"Menu\">\n          {open ? <X /> : <Menu />}\n        </button>\n      </div>\n      {open && (\n        <div className=\"border-t bg-white px-5 py-4 md:hidden\">\n          <div className=\"flex flex-col gap-3\">\n            {links.map(([l, h]) => (\n              <a key={l} href={h} onClick={() => setOpen(false)} className=\"text-sm font-medium\">\n                {l}\n              </a>\n            ))}\n            <a\n              href=\"#internships\"\n              onClick={() => setOpen(false)}\n              className=\"mt-2 rounded-full px-5 py-2 text-center text-sm font-semibold text-white\"\n              style={{ background: \"linear-gradient(90deg,#E63946,#F77F00)\" }}\n            >\n              Join Us\n            </a>\n          </div>\n        </div>\n      )}\n    </header>\n  );\n}\n\n// ---------- HERO ----------\nfunction Hero() {\n  return (\n    <section\n      id=\"home\"\n      className=\"relative flex min-h-[92vh] items-center overflow-hidden pt-16\"\n      style={{ background: \"linear-gradient(135deg,#0D1B2A 0%,#1A2542 55%,#3a1e40 100%)\" }}\n    >\n      <div className=\"relative mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-20 md:grid-cols-2 md:items-center\">\n        <div className=\"text-white\">\n          <span className=\"inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1 text-xs font-medium tracking-widest text-white/85 backdrop-blur\">\n            <ShieldCheck className=\"h-3.5 w-3.5\" /> GOVERNMENT LICENSED · ISO 9001:2015\n          </span>\n          <h1 className=\"mt-5 text-4xl font-extrabold leading-tight md:text-6xl\">\n            Uniting Minds\n            <br />\n            <span style={{ background: \"linear-gradient(90deg,#F77F00,#E63946)\", WebkitBackgroundClip: \"text\", WebkitTextFillColor: \"transparent\" }}>\n              For Change.\n            </span>\n          </h1>\n          <p className=\"mt-5 max-w-xl text-lg text-white/80\">\n            InAmigos Foundation is a Section-8, Central Government licensed NGO founded on 23rd September 2020, working for the betterment of society through food, education, environment, women empowerment and animal welfare.\n          </p>\n          <div className=\"mt-8 flex flex-wrap gap-3\">\n            <a\n              href=\"#internships\"\n              className=\"inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-white shadow-lg transition hover:scale-105\"\n              style={{ background: \"linear-gradient(90deg,#E63946,#F77F00)\" }}\n            >\n              Start your journey <ArrowRight className=\"h-4 w-4\" />\n            </a>\n            <a\n              href=\"#projects\"\n              className=\"inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/15\"\n            >\n              Explore projects\n            </a>\n          </div>\n          <div className=\"mt-10 grid grid-cols-3 gap-4 text-white\">\n            {[\n              [\"50K+\", \"Meals\"],\n              [\"20K+\", \"Trees\"],\n              [\"900+\", \"Women\"],\n            ].map(([v, l]) => (\n              <div key={l as string}>\n                <div className=\"text-2xl font-extrabold\">{v}</div>\n                <div className=\"text-xs uppercase tracking-widest text-white/70\">{l}</div>\n              </div>\n            ))}\n          </div>\n        </div>\n\n        <div className=\"relative mx-auto flex h-[420px] w-full max-w-md items-center justify-center\">\n          <div className=\"relative rounded-[2rem] border border-white/10 bg-black/70 p-10 backdrop-blur-xl\">\n            <img src={logoAsset.url} alt=\"InAmigos Foundation\" className=\"h-56 w-auto md:h-64\" />\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n}\n\n// ---------- TRUST BAR ----------\nfunction TrustBar() {\n  const items = [\n    { icon: <Building2 className=\"h-4 w-4\" />, label: \"Section 8 · MCA\" },\n    { icon: <Award className=\"h-4 w-4\" />, label: \"ISO 9001:2015 (IAF)\" },\n    { icon: <FileCheck2 className=\"h-4 w-4\" />, label: \"CSR-1 Registered\" },\n    { icon: <Globe2 className=\"h-4 w-4\" />, label: \"NGO DARPAN · NITI Aayog\" },\n    { icon: <ShieldCheck className=\"h-4 w-4\" />, label: \"80G & 12A Certified\" },\n  ];\n  return (\n    <div className=\"border-y border-secondary bg-gradient-to-r from-blue-50 to-teal-50\">\n      <div className=\"mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-8 gap-y-3 px-6 py-6 text-sm text-ink/75\">\n        {items.map((i, idx) => (\n          <span key={idx} className=\"inline-flex items-center gap-2 font-medium hover:text-ink transition\">\n            {i.icon} {i.label}\n          </span>\n        ))}\n      </div>\n    </div>\n  );\n}\n\n// ---------- MISSION VISION ----------\nfunction MissionVision() {\n  return (\n    <section id=\"about\" className=\"bg-gradient-to-b from-secondary/40 to-white py-24\">\n      <div className=\"mx-auto max-w-6xl px-6\">\n        <SectionHeader eyebrow=\"About Us\" title=\"Our Mission & Vision\" />\n        <div className=\"mt-12 grid gap-6 md:grid-cols-2\">\n          <Card\n            accent=\"var(--brand-blue)\"\n            bg=\"oklch(0.97 0.03 250)\"\n            icon={<Target className=\"h-7 w-7 text-white\" />}\n            iconBg=\"var(--brand-blue)\"\n            title=\"Our Mission\"\n            text=\"To empower underprivileged communities through education, healthcare, environment conservation and skill development — creating sustainable, positive change in society.\"\n          />\n          <Card\n            accent=\"var(--brand-green)\"\n            bg=\"oklch(0.96 0.05 150)\"\n            icon={<Eye className=\"h-7 w-7 text-white\" />}\n            iconBg=\"var(--brand-green)\"\n            title=\"Our Vision\"\n            text=\"A world where every individual has access to opportunities, resources and support to reach their full potential and contribute meaningfully to society.\"\n          />\n        </div>\n      </div>\n    </section>\n  );\n}\n\nfunction Card({\n  accent,\n  bg,\n  icon,\n  iconBg,\n  title,\n  text,\n}: {\n  accent: string;\n  bg: string;\n  icon: React.ReactNode;\n  iconBg: string;\n  title: string;\n  text: string;\n}) {\n  return (\n    <div className=\"rounded-2xl p-8 shadow-sm transition hover:shadow-md hover:-translate-y-1\" style={{ background: bg, borderLeft: `4px solid ${accent}` }}>\n      <div className=\"grid h-14 w-14 place-items-center rounded-xl\" style={{ background: iconBg }}>\n        {icon}\n      </div>\n      <h3 className=\"mt-5 text-2xl font-bold\">{ title}</h3>\n      <p className=\"mt-3 text-ink/75\">{text}</p>\n    </div>\n  );\n}\n\n// ---------- PROJECTS WITH GALLERY ----------\nconst PROJECTS = [\n  {\n    name: \"Project Seva\",\n    tag: \"SEVA\",\n    color: \"#E63946\",\n    icon: <UtensilsCrossed className=\"h-6 w-6\" />,\n    stat: \"50,000+ Meals Distributed\",\n    desc: \"Daily meal distribution in slums and orphanages, dry ration kits for low-income families, and community kitchens during festivals and emergencies.\",\n    gallery: Array(6).fill(\"https://images.unsplash.com/photo-1559027615-cd9adba27c90?w=400&h=300\"),\n  },\n  {\n    name: \"Project Udaan\",\n    tag: \"UDAAN\",\n    color: \"#7209B7\",\n    icon: <GraduationCap className=\"h-6 w-6\" />,\n    stat: \"900+ Girls Empowered\",\n    desc: \"Digital campaigns and on-ground programs empowering girls with awareness, education access and skill-building for a self-reliant future.\",\n    gallery: Array(6).fill(\"https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=400&h=300\"),\n  },\n  {\n    name: \"Project Jeev\",\n    tag: \"JEEV\",\n    color: \"#06A77D\",\n    icon: <PawPrint className=\"h-6 w-6\" />,\n    stat: \"50+ Animals Fed Daily\",\n    desc: \"Feeding, care and medical support for street animals — because compassion has no species.\",\n    gallery: Array(6).fill(\"https://images.unsplash.com/photo-1552053831-71594a27c62d?w=400&h=300\"),\n  },\n  {\n    name: \"Project Prakriti\",\n    tag: \"PRAKRITI\",\n    color: \"#2D6A4F\",\n    icon: <Sprout className=\"h-6 w-6\" />,\n    stat: \"20,000+ Trees Planted\",\n    desc: \"Community tree plantation drives, cleanliness campaigns and plastic-free zone promotions for a greener tomorrow.\",\n    gallery: Array(6).fill(\"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300\"),\n  },\n  {\n    name: \"Project Bachpanshala\",\n    tag: \"BACHPANSHALA\",\n    color: \"#F77F00\",\n    icon: <Baby className=\"h-6 w-6\" />,\n    stat: \"Educating Rural Children\",\n    desc: \"Bringing books, learning and dignity to children in rural areas — building foundations for lifelong opportunity.\",\n    gallery: Array(6).fill(\"https://images.unsplash.com/photo-1427504494785-cdba58dadff0?w=400&h=300\"),\n  },\n];\n\nfunction Projects() {\n  const [selectedProject, setSelectedProject] = useState<null | number>(null);\n\n  return (\n    <section id=\"projects\" className=\"relative overflow-hidden py-24\">\n      <div className=\"absolute inset-0 -z-10\" style={{ background: \"linear-gradient(180deg,#E3F2FD,#ffffff)\" }} />\n      <div className=\"mx-auto max-w-7xl px-6\">\n        <SectionHeader eyebrow=\"Our Work\" title=\"Impactful Projects\" subtitle=\"Click on any project to see real-world impact and photos.\" />\n        <div className=\"mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3\">\n          {PROJECTS.map((p, idx) => (\n            <article\n              key={p.tag}\n              className=\"group cursor-pointer overflow-hidden rounded-2xl bg-white shadow-[0_4px_18px_-8px_rgba(0,0,0,0.15)] transition hover:-translate-y-2 hover:shadow-[0_18px_40px_-12px_rgba(0,0,0,0.25)]\"\n              onClick={() => setSelectedProject(idx)}\n            >\n              <div className=\"relative h-40\" style={{ background: `linear-gradient(135deg, ${p.color}, ${p.color}aa)` }}>\n                <div className=\"absolute inset-0 opacity-25\" style={{ background: \"radial-gradient(circle at 30% 30%, white, transparent 60%)\" }} />\n                <div className=\"relative flex h-full items-center justify-between px-6\">\n                  <div className=\"grid h-14 w-14 place-items-center rounded-2xl bg-white/25 text-white backdrop-blur transition group-hover:bg-white/40\">\n                    {p.icon}\n                  </div>\n                  <span className=\"rounded-full bg-black/30 px-3 py-1 text-[10px] font-bold tracking-widest text-white\">{p.tag}</span>\n                </div>\n              </div>\n              <div className=\"p-6\">\n                <h3 className=\"text-xl font-bold\">{p.name}</h3>\n                <p className=\"mt-1 text-sm font-semibold\" style={{ color: p.color }}>\n                  {p.stat}\n                </p>\n                <p className=\"mt-3 text-sm text-ink/70\">{p.desc}</p>\n                <button className=\"mt-4 inline-flex items-center gap-1 text-sm font-semibold transition group-hover:translate-x-1\" style={{ color: p.color }}>\n                  View Gallery <ArrowRight className=\"h-4 w-4\" />\n                </button>\n              </div>\n            </article>\n          ))}\n        </div>\n      </div>\n\n      {/* Gallery Modal */}\n      {selectedProject !== null && (\n        <ImageGallery\n          project={PROJECTS[selectedProject]}\n          onClose={() => setSelectedProject(null)}\n        />\n      )}\n    </section>\n  );\n}\n\nfunction ImageGallery({\n  project,\n  onClose,\n}: {\n  project: (typeof PROJECTS)[0];\n  onClose: () => void;\n}) {\n  const [currentImageIndex, setCurrentImageIndex] = useState(0);\n\n  useEffect(() => {\n    const handleKeyDown = (e: KeyboardEvent) => {\n      if (e.key === \"Escape\") onClose();\n      if (e.key === \"ArrowRight\") setCurrentImageIndex((i) => (i + 1) % project.gallery.length);\n      if (e.key === \"ArrowLeft\") setCurrentImageIndex((i) => (i - 1 + project.gallery.length) % project.gallery.length);\n    };\n    window.addEventListener(\"keydown\", handleKeyDown);\n    return () => window.removeEventListener(\"keydown\", handleKeyDown);\n  }, [onClose, project.gallery.length]);\n\n  return (\n    <div className=\"fixed inset-0 z-[200] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm\">\n      <div className=\"relative max-w-4xl w-full\">\n        <button\n          onClick={onClose}\n          className=\"absolute -top-10 right-0 text-white hover:text-gray-300 transition\"\n          aria-label=\"Close gallery\"\n        >\n          <X className=\"h-8 w-8\" />\n        </button>\n\n        <div className=\"relative bg-black rounded-lg overflow-hidden\">\n          <img\n            src={project.gallery[currentImageIndex]}\n            alt={`${project.name} gallery image ${currentImageIndex + 1}`}\n            className=\"w-full h-auto object-cover max-h-[70vh]\"\n          />\n          <div\n            className=\"absolute top-4 left-4 rounded-full px-4 py-2 text-white text-sm font-bold\"\n            style={{ background: project.color }}\n          >\n            {project.tag}\n          </div>\n        </div>\n\n        <div className=\"mt-4 text-center text-white text-sm\">\n          {currentImageIndex + 1} / {project.gallery.length}\n        </div>\n\n        <div className=\"mt-4 flex gap-2 overflow-x-auto\">\n          {project.gallery.map((img, idx) => (\n            <button\n              key={idx}\n              onClick={() => setCurrentImageIndex(idx)}\n              className={`relative shrink-0 rounded-lg overflow-hidden border-2 transition ${\n                idx === currentImageIndex ? \"border-white\" : \"border-white/30 hover:border-white/50\"\n              }`}\n            >\n              <img src={img} alt={`Thumbnail ${idx + 1}`} className=\"h-16 w-16 object-cover\" />\n            </button>\n          ))}\n        </div>\n\n        <div className=\"mt-6 flex justify-between\">\n          <button\n            onClick={() => setCurrentImageIndex((i) => (i - 1 + project.gallery.length) % project.gallery.length)}\n            className=\"flex items-center gap-2 rounded-full bg-white/10 hover:bg-white/20 text-white px-4 py-2 transition\"\n          >\n            <ChevronLeft className=\"h-5 w-5\" /> Previous\n          </button>\n          <button\n            onClick={() => setCurrentImageIndex((i) => (i + 1) % project.gallery.length)}\n            className=\"flex items-center gap-2 rounded-full bg-white/10 hover:bg-white/20 text-white px-4 py-2 transition\"\n          >\n            Next <ChevronRight className=\"h-5 w-5\" />\n          </button>\n        </div>\n      </div>\n    </div>\n  );\n}\n\n// ---------- STATS ----------\nfunction useCountUp(target: number, ref: React.RefObject<HTMLElement | null>) {\n  const [val, setVal] = useState(0);\n  useEffect(() => {\n    if (!ref.current) return;\n    let started = false;\n    const io = new IntersectionObserver((entries) => {\n      entries.forEach((e) => {\n        if (e.isIntersecting && !started) {\n          started = true;\n          const start = performance.now();\n          const dur = 1800;\n          const tick = (t: number) => {\n            const p = Math.min(1, (t - start) / dur);\n            const eased = 1 - Math.pow(1 - p, 3);\n            setVal(Math.floor(target * eased));\n            if (p < 1) requestAnimationFrame(tick);\n          };\n          requestAnimationFrame(tick);\n        }\n      });\n    }, { threshold: 0.3 });\n    io.observe(ref.current);\n    return () => io.disconnect();\n  }, [target, ref]);\n  return val;\n}\n\nfunction StatCard({ value, suffix, label, color }: { value: number; suffix: string; label: string; color: string }) {\n  const ref = useRef<HTMLDivElement>(null);\n  const n = useCountUp(value, ref);\n  return (\n    <div\n      ref={ref}\n      className=\"rounded-2xl border-2 bg-white p-8 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-md\"\n      style={{ borderColor: color }}\n    >\n      <div className=\"text-4xl font-extrabold md:text-5xl\" style={{ color }}>\n        {n.toLocaleString(\"en-IN\")}\n        {suffix}\n      </div>\n      <div className=\"mt-2 text-sm font-medium uppercase tracking-widest text-ink/70\">{label}</div>\n    </div>\n  );\n}\n\nfunction Stats() {\n  return (\n    <section className=\"bg-gradient-to-b from-white to-secondary/40 py-24\">\n      <div className=\"mx-auto max-w-6xl px-6\">\n        <SectionHeader eyebrow=\"By the numbers\" title=\"Our Impact At A Glance\" />\n        <div className=\"mt-12 grid grid-cols-2 gap-5 md:grid-cols-4\">\n          <StatCard value={50000} suffix=\"+\" label=\"Meals\" color=\"#E63946\" />\n          <StatCard value={100000} suffix=\"+\" label=\"Interns Trained\" color=\"#1976D2\" />\n          <StatCard value={900} suffix=\"+\" label=\"Women Empowered\" color=\"#7209B7\" />\n          <StatCard value={20000} suffix=\"+\" label=\"Trees Planted\" color=\"#4CAF50\" />\n        </div>\n      </div>\n    </section>\n  );\n}\n\n// ---------- WHY TRUST US ----------\nfunction WhyTrust() {\n  const points = [\n    { icon: <Building2 className=\"h-5 w-5\" />, label: \"Licensed by Central Government (Section 8, MCA)\" },\n    { icon: <CheckCircle2 className=\"h-5 w-5\" />, label: \"80G and 12A certified — donations are tax deductible\" },\n    { icon: <Award className=\"h-5 w-5\" />, label: \"ISO 9001:2015 certified (IAF accredited)\" },\n    { icon: <Zap className=\"h-5 w-5\" />, label: \"CSR-1 registered — CSR00083159\" },\n    { icon: <Globe2 className=\"h-5 w-5\" />, label: \"NGO DARPAN registered by NITI Aayog (CG/2021/0295684)\" },\n    { icon: <Lock className=\"h-5 w-5\" />, label: \"Trademarked brand — logo & name approved by Government\" },\n    { icon: <TrendingUp className=\"h-5 w-5\" />, label: \"Monthly GST filings, annual auditing, transparent books\" },\n  ];\n\n  return (\n    <section className=\"bg-gradient-to-b from-ink to-ink/95 py-24 text-white\">\n      <div className=\"mx-auto grid max-w-6xl gap-12 px-6 md:grid-cols-2 md:items-start\">\n        <div>\n          <span className=\"inline-block rounded-full bg-white/10 px-3 py-1 text-xs font-medium tracking-widest\">CREDENTIALS</span>\n          <h2 className=\"mt-3 text-4xl font-extrabold leading-tight md:text-5xl\">Why trust us?</h2>\n          <p className=\"mt-4 max-w-lg text-white/70\">\n            Every rupee, every hour and every certificate is documented. InAmigos Foundation operates with complete transparency and government-verified accountability.\n          </p>\n          <div className=\"mt-8 flex flex-wrap gap-2\">\n            {[\"80G Certified\", \"ISO 9001:2015\", \"CSR-1 Registered\", \"Gov. Licensed\"].map((badge) => (\n              <span key={badge} className=\"rounded-full bg-white/10 border border-white/20 px-3 py-1 text-xs font-semibold\">\n                ✓ {badge}\n              </span>\n            ))}\n          </div>\n        </div>\n\n        <div className=\"grid gap-3 md:grid-cols-2\">\n          {points.map((p, idx) => (\n            <div key={idx} className=\"rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur transition hover:bg-white/10 hover:border-white/20\">\n              <div className=\"flex gap-3\">\n                <div className=\"mt-1\">{p.icon}</div>\n                <span className=\"text-sm leading-relaxed text-white/90\">{p.label}</span>\n              </div>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n}\n\n// ---------- TEAM ----------\nconst TEAM = [\n  { name: \"Govind Shukla\", role: \"Founder — CEO\", featured: true },\n  { name: \"Raman Swarnakar\", role: \"Chief Operating Officer\" },\n  { name: \"Khush Gupta\", role: \"Deputy Head, Core Member\" },\n  { name: \"Iniya Radhakrishnan\", role: \"Head of Internship Dept.\" },\n  { name: \"Shivani Tyagi\", role: \"Team Leader\" },\n  { name: \"Shaik Shahira Bhanu\", role: \"Senior Core-member\" },\n  { name: \"Vignesh\", role: \"Junior Core-member\" },\n  { name: \"Manem Padmasri\", role: \"Junior Core-member\" },\n  { name: \"Madhusudan\", role: \"CSR Coordinator\" },\n];\n\nfunction TeamCard({ name, role, featured }: { name: string; role: string; featured?: boolean }) {\n  const initials = name\n    .split(\" \")\n    .map((n) => n[0])\n    .slice(0, 2)\n    .join(\"\");\n  return (\n    <div\n      className={`group rounded-2xl border bg-white p-6 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-md ${\n        featured ? \"ring-2 ring-brand-red/40\" : \"\"\n      }`}\n    >\n      <div\n        className=\"mx-auto grid h-20 w-20 place-items-center rounded-full text-2xl font-extrabold text-white\"\n        style={{\n          background: featured ? \"linear-gradient(135deg,#E63946,#F77F00)\" : \"linear-gradient(135deg,#1976D2,#7209B7)\",\n        }}\n      >\n        {initials}\n      </div>\n      <h4 className=\"mt-4 text-base font-bold\">{name}</h4>\n      <p className=\"text-xs uppercase tracking-widest text-ink/60\">{role}</p>\n      <div className=\"mt-3 flex justify-center gap-2 opacity-70 transition group-hover:opacity-100\">\n        <a href=\"#\" aria-label=\"LinkedIn\" className=\"grid h-8 w-8 place-items-center rounded-full bg-secondary hover:bg-brand-blue hover:text-white transition\">\n          <Linkedin className=\"h-4 w-4\" />\n        </a>\n        <a href=\"#\" aria-label=\"Email\" className=\"grid h-8 w-8 place-items-center rounded-full bg-secondary hover:bg-brand-red hover:text-white transition\">\n          <Mail className=\"h-4 w-4\" />\n        </a>\n      </div>\n    </div>\n  );\n}\n\nfunction Team() {\n  return (\n    <section id=\"team\" className=\"py-24\">\n      <div className=\"mx-auto max-w-7xl px-6\">\n        <SectionHeader eyebrow=\"The Amigos\" title=\"Meet Our Leadership\" subtitle=\"Dedicated individuals driving change.\" />\n        <div className=\"mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5\">\n          {TEAM.map((t) => (\n            <TeamCard key={t.name} {...t} />\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n}\n\n// ---------- INTERNSHIPS ----------\nconst ROLES = [\n  { icon: <Pencil className=\"h-5 w-5\" />, name: \"Content Writing\", color: \"#E63946\" },\n  { icon: <Palette className=\"h-5 w-5\" />, name: \"Graphic Design\", color: \"#7209B7\" },\n  { icon: <HeartHandshake className=\"h-5 w-5\" />, name: \"Field Volunteer\", color: \"#06A77D\" },\n  { icon: <Megaphone className=\"h-5 w-5\" />, name: \"Community Manager\", color: \"#F77F00\" },\n  { icon: <BookOpen className=\"h-5 w-5\" />, name: \"Community Teacher\", color: \"#1976D2\" },\n  { icon: <Handshake className=\"h-5 w-5\" />, name: \"Social Entrepreneur\", color: \"#2D6A4F\" },\n  { icon: <Wallet className=\"h-5 w-5\" />, name: \"Fundraising\", color: \"#C7254E\" },\n  { icon: <Users className=\"h-5 w-5\" />, name: \"Social Work\", color: \"#4A5FBD\" },\n];\n\nfunction Internships() {\n  return (\n    <section id=\"internships\" className=\"relative overflow-hidden py-24\">\n      <div className=\"absolute inset-0 -z-10\" style={{ background: \"linear-gradient(180deg,#E3F2FD,#ffffff)\" }} />\n      <div className=\"mx-auto max-w-6xl px-6\">\n        <SectionHeader eyebrow=\"Grow With Us\" title=\"Internship Opportunities\" subtitle=\"1–3 month programs with certificate from a government-licensed, ISO-certified NGO.\" />\n        <div className=\"mt-12 grid grid-cols-2 gap-4 md:grid-cols-4\">\n          {ROLES.map((r) => (\n            <div key={r.name} className=\"rounded-2xl border bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md\">\n              <div className=\"grid h-11 w-11 place-items-center rounded-xl text-white\" style={{ background: r.color }}>\n                {r.icon}\n              </div>\n              <div className=\"mt-4 text-sm font-bold\">{r.name}</div>\n              <div className=\"mt-1 flex items-center gap-2 text-[11px] uppercase tracking-widest text-ink/60\">1–3 months · Certificate</div>\n            </div>\n          ))}\n        </div>\n\n        <div className=\"mt-12 rounded-3xl border bg-white p-8 shadow-sm md:p-10\">\n          <div className=\"grid gap-8 md:grid-cols-2\">\n            <div>\n              <h3 className=\"text-2xl font-bold\">Why our certificate matters</h3>\n              <ul className=\"mt-4 space-y-3 text-sm text-ink/75\">\n                {[\n                  \"Association with a CSR-1 registered, ISO 9001:2015 certified, Central Government licensed NGO.\",\n                  \"Recognised globally by institutions and CSR departments.\",\n                  \"Strengthens your resume for NGOs, CSR projects and social enterprises.\",\n                  \"Reflects real dedication to community service and impact.\",\n                ].map((t) => (\n                  <li key={t} className=\"flex gap-2\">\n                    <CheckCircle2 className=\"mt-0.5 h-4 w-4 shrink-0 text-brand-green\" /> {t}\n                  </li>\n                ))}\n              </ul>\n            </div>\n            <form className=\"rounded-2xl bg-secondary/50 p-6\" onSubmit={(e) => e.preventDefault()}>\n              <h4 className=\"text-lg font-bold\">Apply now</h4>\n              <div className=\"mt-4 grid gap-3\">\n                <input className=\"rounded-lg border bg-white px-4 py-3 text-sm outline-none focus:border-brand-blue\" placeholder=\"Full name\" />\n                <input className=\"rounded-lg border bg-white px-4 py-3 text-sm outline-none focus:border-brand-blue\" placeholder=\"Email\" type=\"email\" />\n                <input className=\"rounded-lg border bg-white px-4 py-3 text-sm outline-none focus:border-brand-blue\" placeholder=\"College / University\" />\n                <select className=\"rounded-lg border bg-white px-4 py-3 text-sm outline-none focus:border-brand-blue\">\n                  <option>Select role</option>\n                  {ROLES.map((r) => (\n                    <option key={r.name}>{r.name}</option>\n                  ))}\n                </select>\n                <textarea className=\"rounded-lg border bg-white px-4 py-3 text-sm outline-none focus:border-brand-blue\" placeholder=\"Why do you want to join?\" rows={3} />\n                <button\n                  className=\"mt-2 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-white shadow-md transition hover:scale-[1.02]\"\n                  style={{ background: \"linear-gradient(90deg,#E63946,#F77F00)\" }}\n                >\n                  Submit application <ArrowRight className=\"h-4 w-4\" />\n                </button>\n              </div>\n            </form>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n}\n\n// ---------- TESTIMONIALS ----------\nconst TESTIMONIALS = [\n  {\n    quote:\n      \"Interning with InAmigos was the most meaningful thing I did in college. The certificate opened doors — but the field experience changed how I see the world.\",\n    name: \"Aditi Verma\",\n    role: \"Content Writing Intern, 2024\",\n    color: \"#E63946\",\n  },\n  {\n    quote:\n      \"A truly transparent organisation. Every drive is documented, every rupee accounted. It's rare to find this level of professionalism in an NGO.\",\n    name: \"Rohan Kapoor\",\n    role: \"Corporate CSR Partner\",\n    color: \"#1976D2\",\n  },\n  {\n    quote: \"Project Prakriti brought our village 400 saplings and taught our kids why they matter. That's real change.\",\n    name: \"Sunita Devi\",\n    role: \"Community Member, Bilaspur\",\n    color: \"#4CAF50\",\n  },\n];\n\nfunction Testimonials() {\n  return (\n    <section className=\"bg-secondary/50 py-24\">\n      <div className=\"mx-auto max-w-6xl px-6\">\n        <SectionHeader eyebrow=\"Voices\" title=\"What people say\" />\n        <div className=\"mt-12 grid gap-6 md:grid-cols-3\">\n          {TESTIMONIALS.map((t) => (\n            <figure key={t.name} className=\"relative rounded-2xl bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-md\" style={{ borderLeft: `4px solid ${t.color}` }}>\n              <Quote className=\"absolute right-5 top-5 h-8 w-8 text-ink/10\" />\n              <div className=\"flex gap-0.5 text-brand-gold\">\n                {Array.from({ length: 5 }).map((_, i) => (\n                  <Star key={i} className=\"h-4 w-4 fill-current\" />\n                ))}\n              </div>\n              <blockquote className=\"mt-3 text-sm text-ink/80\">\"{t.quote}\"</blockquote>\n              <figcaption className=\"mt-5\">\n                <div className=\"text-sm font-bold\">{t.name}</div>\n                <div className=\"text-xs text-ink/60\">{t.role}</div>\n              </figcaption>\n            </figure>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n}\n\n// ---------- SOCIAL LINKS SECTION ----------\nfunction SocialLinks() {\n  const socials = [\n    {\n      name: \"LinkedIn\",\n      icon: Linkedin,\n      url: \"https://www.linkedin.com/company/inamigos-foundation\",\n      color: \"#0A66C2\",\n      followers: \"5K+ Followers\",\n    },\n    {\n      name: \"Instagram\",\n      icon: Instagram,\n      url: \"https://instagram.com/inamigos?utm_medium=copy_link\",\n      color: \"#E4405F\",\n      followers: \"12K+ Followers\",\n    },\n    {\n      name: \"Facebook\",\n      icon: Facebook,\n      url: \"https://www.facebook.com/share/1CeyCkB3uL/\",\n      color: \"#1877F2\",\n      followers: \"8K+ Followers\",\n    },\n    {\n      name: \"Twitter\",\n      icon: Twitter,\n      url: \"https://twitter.com/InamigosF?s=08\",\n      color: \"#000000\",\n      followers: \"3K+ Followers\",\n    },\n    {\n      name: \"YouTube\",\n      icon: Play,\n      url: \"https://youtube.com/@inamigosfoundation?si=lcyRib3x-bScUF5M\",\n      color: \"#FF0000\",\n      followers: \"2K+ Subscribers\",\n    },\n  ];\n\n  return (\n    <section className=\"bg-gradient-to-b from-white to-secondary/30 py-24\">\n      <div className=\"mx-auto max-w-6xl px-6\">\n        <SectionHeader\n          eyebrow=\"Stay Connected\"\n          title=\"Follow Our Journey\"\n          subtitle=\"Stay updated on exciting career opportunities, field stories, and impact updates across all platforms.\"\n        />\n        <div className=\"mt-12 grid grid-cols-2 gap-4 md:grid-cols-5\">\n          {socials.map((social) => {\n            const Icon = social.icon;\n            return (\n              <a\n                key={social.name}\n                href={social.url}\n                target=\"_blank\"\n                rel=\"noopener noreferrer\"\n                className=\"group rounded-2xl border-2 border-secondary bg-white p-6 text-center shadow-sm transition hover:-translate-y-2 hover:shadow-lg\"\n                style={{ borderColor: social.color }}\n              >\n                <div className=\"mx-auto mb-3 grid h-14 w-14 place-items-center rounded-full text-white transition group-hover:scale-110\" style={{ background: social.color }}>\n                  <Icon className=\"h-6 w-6\" />\n                </div>\n                <h3 className=\"text-sm font-bold\">{social.name}</h3>\n                <p className=\"mt-1 text-xs text-ink/60 mb-3\">{social.followers}</p>\n                <div className=\"flex items-center justify-center gap-1 text-xs font-semibold transition group-hover:translate-x-1\" style={{ color: social.color }}>\n                  Follow <ExternalLink className=\"h-3 w-3\" />\n                </div>\n              </a>\n            );\n          })}\n        </div>\n        <div className=\"mt-12 rounded-2xl border-2 border-secondary bg-gradient-to-r from-blue-50 to-teal-50 p-8 text-center\">\n          <h3 className=\"text-xl font-bold\">📢 Latest Updates</h3>\n          <p className=\"mt-2 text-ink/70 max-w-2xl mx-auto\">\n            Get the latest on our internship programs, volunteer opportunities, and real-world impact stories. Join our community of 100,000+ changemakers across India.\n          </p>\n          <a\n            href=\"https://forms.gle/AB4c1hLaDDmtrKGU7\"\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n            className=\"mt-4 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-white shadow-md transition hover:scale-105\"\n            style={{ background: \"linear-gradient(90deg,#E63946,#F77F00)\" }}\n          >\n            🙋 Volunteer Application Form <ExternalLink className=\"h-4 w-4\" />\n          </a>\n        </div>\n      </div>\n    </section>\n  );\n}\n\n// ---------- FINAL CTA ----------\nfunction FinalCTA() {\n  return (\n    <section id=\"contact\" className=\"relative overflow-hidden py-24 text-white\" style={{ background: \"linear-gradient(135deg,#0D1B2A,#1A2542 60%,#3a1e40)\" }}>\n      <div className=\"relative mx-auto max-w-3xl px-6 text-center\">\n        <h2 className=\"text-4xl font-extrabold leading-tight md:text-5xl\">Ready to make a difference?</h2>\n        <p className=\"mt-4 text-white/75\">Join thousands of interns and volunteers building a kinder, cleaner, more equitable India with InAmigos.</p>\n        <div className=\"mt-8 flex flex-wrap justify-center gap-3\">\n          <a\n            href=\"#internships\"\n            className=\"inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-bold text-white shadow-lg transition hover:scale-105\"\n            style={{ background: \"linear-gradient(90deg,#E63946,#F77F00)\" }}\n          >\n            Get started <ArrowRight className=\"h-4 w-4\" />\n          </a>\n          <a\n            href=\"mailto:inamigosfoundation@gmail.com\"\n            className=\"inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-7 py-3 text-sm font-semibold backdrop-blur transition hover:bg-white/15\"\n          >\n            <Mail className=\"h-4 w-4\" /> Contact us\n          </a>\n        </div>\n      </div>\n    </section>\n  );\n}\n\n// ---------- FOOTER ----------\nfunction Footer() {\n  return (\n    <footer className=\"bg-ink text-white/80\">\n      <div className=\"mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-4\">\n        <div>\n          <div className=\"flex items-center gap-2\">\n            <img src={logoAsset.url} alt=\"InAmigos\" className=\"h-10 w-auto rounded\" />\n            <span className=\"text-lg font-bold text-white\">InAmigos</span>\n          </div>\n          <p className=\"mt-4 text-sm\">\n            Section-8 NGO, licensed by Central Government of India. Uniting minds for change since 23rd September 2020.\n          </p>\n          <p className=\"mt-3 text-xs text-white/50\">CIN: U85300CT2020NPL010641</p>\n        </div>\n        <div>\n          <h5 className=\"text-sm font-bold uppercase tracking-widest text-white\">Quick Links</h5>\n          <ul className=\"mt-4 space-y-2 text-sm\">\n            {[\n              [\"About\", \"#about\"],\n              [\"Projects\", \"#projects\"],\n              [\"Team\", \"#team\"],\n              [\"Internships\", \"#internships\"],\n              [\"Contact\", \"#contact\"],\n            ].map(([l, h]) => (\n              <li key={l}>\n                <a className=\"hover:text-white transition\" href={h}>\n                  {l}\n                </a>\n              </li>\n            ))}\n          </ul>\n        </div>\n        <div>\n          <h5 className=\"text-sm font-bold uppercase tracking-widest text-white\">Contact</h5>\n          <ul className=\"mt-4 space-y-3 text-sm\">\n            <li className=\"flex gap-2\">\n              <Mail className=\"h-4 w-4 shrink-0\" />\n              <a href=\"mailto:inamigosfoundation@gmail.com\" className=\"hover:text-white transition\">\n                inamigosfoundation@gmail.com\n              </a>\n            </li>\n            <li className=\"flex gap-2\">\n              <Phone className=\"h-4 w-4 shrink-0\" />\n              <a href=\"tel:+916267309902\" className=\"hover:text-white transition\">\n                +91 6267 309 902\n              </a>\n            </li>\n            <li className=\"flex gap-2\">\n              <MapPin className=\"h-4 w-4 shrink-0\" />\n              <span>Ward No 5, Sipat Ujwal Nagar, Bilaspur, Chhattisgarh 495555</span>\n            </li>\n          </ul>\n        </div>\n        <div>\n          <h5 className=\"text-sm font-bold uppercase tracking-widest text-white\">Follow Us</h5>\n          <div className=\"mt-4 flex gap-3\">\n            <a aria-label=\"LinkedIn\" href=\"https://www.linkedin.com/company/inamigos-foundation\" target=\"_blank\" rel=\"noopener noreferrer\" className=\"grid h-9 w-9 place-items-center rounded-full bg-white/10 hover:bg-brand-blue transition\">\n              <Linkedin className=\"h-4 w-4\" />\n            </a>\n            <a aria-label=\"Instagram\" href=\"https://instagram.com/inamigos?utm_medium=copy_link\" target=\"_blank\" rel=\"noopener noreferrer\" className=\"grid h-9 w-9 place-items-center rounded-full bg-white/10 hover:bg-brand-red transition\">\n              <Instagram className=\"h-4 w-4\" />\n            </a>\n            <a aria-label=\"Facebook\" href=\"https://www.facebook.com/share/1CeyCkB3uL/\" target=\"_blank\" rel=\"noopener noreferrer\" className=\"grid h-9 w-9 place-items-center rounded-full bg-white/10 hover:bg-brand-blue transition\">\n              <Facebook className=\"h-4 w-4\" />\n            </a>\n            <a aria-label=\"Twitter\" href=\"https://twitter.com/InamigosF?s=08\" target=\"_blank\" rel=\"noopener noreferrer\" className=\"grid h-9 w-9 place-items-center rounded-full bg-white/10 hover:bg-black transition\">\n              <Twitter className=\"h-4 w-4\" />\n            </a>\n            <a aria-label=\"YouTube\" href=\"https://youtube.com/@inamigosfoundation?si=lcyRib3x-bScUF5M\" target=\"_blank\" rel=\"noopener noreferrer\" className=\"grid h-9 w-9 place-items-center rounded-full bg-white/10 hover:bg-brand-red transition\">\n              <Play className=\"h-4 w-4\" />\n            </a>\n          </div>\n          <a href=\"https://www.inamigosfoundation.org.in/\" className=\"mt-6 inline-block text-xs text-white/60 hover:text-white transition\" target=\"_blank\" rel=\"noopener noreferrer\">\n            inamigosfoundation.org.in\n          </a>\n        </div>\n      </div>\n      <div className=\"border-t border-white/10\">\n        <div className=\"mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-6 py-5 text-xs text-white/50 md:flex-row\">\n          <p>© {new Date().getFullYear()} InAmigos Foundation. All rights reserved.</p>\n          <p>ISO 9001:2015 · CSR-1 · 80G · 12A · NGO DARPAN</p>\n        </div>\n      </div>\n    </footer>\n  );\n}\n\n// ---------- helpers ----------\nfunction SectionHeader({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle?: string }) {\n  return (\n    <div className=\"text-center\">\n      <span className=\"inline-block rounded-full bg-secondary px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-ink/70\">{eyebrow}</span>\n      <h2 className=\"mt-3 text-3xl font-extrabold md:text-5xl\">{title}</h2>\n      {subtitle && <p className=\"mx-auto mt-3 max-w-2xl text-ink/70\">{subtitle}</p>}\n    </div>\n  );\n}\n
+        <a href="#home" className="flex items-center gap-2 hover:opacity-80 transition">
+          <img src={logoAsset.url} alt="InAmigos" className="h-10 w-auto rounded-md" />
+          <span className="hidden md:inline font-semibold text-lg">InAmigos</span>
+        </a>
+        <nav className="hidden md:flex items-center gap-8">
+          {links.map(([label, href]) => (
+            <a key={href} href={href} className="hover:text-primary transition">
+              {label}
+            </a>
+          ))}
+        </nav>
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden"
+          aria-label="Toggle menu"
+        >
+          {open ? <X size={24} /> : <Menu size={24} />}
+        </button>
+        {open && (
+          <nav className="absolute top-16 left-0 right-0 bg-white shadow-lg md:hidden">
+            <div className="flex flex-col p-4 gap-4">
+              {links.map(([label, href]) => (
+                <a key={href} href={href} className="hover:text-primary transition">
+                  {label}
+                </a>
+              ))}
+            </div>
+          </nav>
+        )}
+      </div>
+    </header>
+  );
+}
+
+// Hero section
+function Hero() {
+  return (
+    <section id="home" className="pt-32 pb-16 px-5 md:px-8">
+      <div className="max-w-4xl mx-auto text-center">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          Uniting Minds For Change
+        </h1>
+        <p className="text-lg md:text-xl text-muted-foreground mb-8">
+          Empowering communities across India through education, health, and sustainable development.
+        </p>
+        <button className="bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary/90 transition inline-flex items-center gap-2">
+          Get Involved <ArrowRight size={20} />
+        </button>
+      </div>
+    </section>
+  );
+}
+
+// Trust bar
+function TrustBar() {
+  return (
+    <section className="bg-gray-50 py-12 px-5 md:px-8">
+      <div className="max-w-7xl mx-auto">
+        <p className="text-center text-sm font-semibold text-muted-foreground mb-8">
+          TRUSTED BY
+        </p>
+        <div className="flex flex-wrap justify-center items-center gap-8">
+          <ShieldCheck size={32} className="text-primary" />
+          <Award size={32} className="text-primary" />
+          <Globe2 size={32} className="text-primary" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Mission & Vision
+function MissionVision() {
+  return (
+    <section id="about" className="py-20 px-5 md:px-8">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+          Our Mission & Vision
+        </h2>
+        <div className="grid md:grid-cols-2 gap-12">
+          <div className="bg-blue-50 p-8 rounded-lg">
+            <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+              <Target size={28} className="text-primary" />
+              Mission
+            </h3>
+            <p className="text-gray-700">
+              To empower marginalized communities through education, healthcare, and sustainable livelihood programs.
+            </p>
+          </div>
+          <div className="bg-green-50 p-8 rounded-lg">
+            <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+              <Eye size={28} className="text-primary" />
+              Vision
+            </h3>
+            <p className="text-gray-700">
+              A world where every individual has access to quality education and opportunities for holistic development.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Projects
+function Projects() {
+  const projects = [
+    {
+      icon: GraduationCap,
+      title: "Udaan",
+      description: "Educational programs for underprivileged children"
+    },
+    {
+      icon: Sprout,
+      title: "Jeev",
+      description: "Healthcare and wellness initiatives"
+    },
+    {
+      icon: Sprout,
+      title: "Prakriti",
+      description: "Environmental sustainability projects"
+    },
+    {
+      icon: Baby,
+      title: "Bachpanshala",
+      description: "Childcare and early education programs"
+    }
+  ];
+
+  return (
+    <section id="projects" className="py-20 px-5 md:px-8 bg-gray-50">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+          Our Projects
+        </h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {projects.map((project, idx) => {
+            const Icon = project.icon;
+            return (
+              <div key={idx} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+                <Icon size={40} className="text-primary mb-4" />
+                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                <p className="text-gray-600">{project.description}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Stats
+function Stats() {
+  return (
+    <section className="py-20 px-5 md:px-8 bg-primary text-white">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-4 gap-8 text-center">
+          <div>
+            <p className="text-4xl font-bold mb-2">50K+</p>
+            <p className="text-lg">Lives Impacted</p>
+          </div>
+          <div>
+            <p className="text-4xl font-bold mb-2">100+</p>
+            <p className="text-lg">Schools Supported</p>
+          </div>
+          <div>
+            <p className="text-4xl font-bold mb-2">500+</p>
+            <p className="text-lg">Volunteers</p>
+          </div>
+          <div>
+            <p className="text-4xl font-bold mb-2">15+</p>
+            <p className="text-lg">Years Active</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Why Trust
+function WhyTrust() {
+  return (
+    <section className="py-20 px-5 md:px-8">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+          Why Trust InAmigos
+        </h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="flex gap-4">
+            <ShieldCheck size={32} className="text-primary flex-shrink-0" />
+            <div>
+              <h3 className="text-xl font-bold mb-2">Government Licensed</h3>
+              <p className="text-gray-600">Officially registered and recognized</p>
+            </div>
+          </div>
+          <div className="flex gap-4">
+            <Award size={32} className="text-primary flex-shrink-0" />
+            <div>
+              <h3 className="text-xl font-bold mb-2">ISO Certified</h3>
+              <p className="text-gray-600">ISO 9001:2015 certified organization</p>
+            </div>
+          </div>
+          <div className="flex gap-4">
+            <FileCheck2 size={32} className="text-primary flex-shrink-0" />
+            <div>
+              <h3 className="text-xl font-bold mb-2">Transparent</h3>
+              <p className="text-gray-600">Regular reports and accountability</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Team
+function Team() {
+  return (
+    <section id="team" className="py-20 px-5 md:px-8 bg-gray-50">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+          Our Team
+        </h2>
+        <p className="text-center text-gray-600 mb-8">
+          Dedicated professionals working towards social change
+        </p>
+      </div>
+    </section>
+  );
+}
+
+// Internships
+function Internships() {
+  return (
+    <section id="internships" className="py-20 px-5 md:px-8">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+          Internship Opportunities
+        </h2>
+        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Join us and gain hands-on experience in social development while making a real difference.
+        </p>
+        <div className="bg-blue-50 p-8 rounded-lg text-center">
+          <button className="bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary/90 transition inline-flex items-center gap-2">
+            Apply Now <ArrowRight size={20} />
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Testimonials
+function Testimonials() {
+  return (
+    <section className="py-20 px-5 md:px-8 bg-gray-50">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+          What People Say
+        </h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[1, 2, 3].map((_, idx) => (
+            <div key={idx} className="bg-white p-6 rounded-lg shadow">
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={16} className="fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <p className="text-gray-700 mb-4">
+                "This organization truly makes a difference in people's lives."
+              </p>
+              <p className="font-semibold">Beneficiary</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Social Links
+function SocialLinks() {
+  return (
+    <section className="py-12 px-5 md:px-8">
+      <div className="max-w-7xl mx-auto flex justify-center gap-8">
+        <a href="#" aria-label="LinkedIn" className="hover:text-primary transition">
+          <Linkedin size={28} />
+        </a>
+        <a href="#" aria-label="Instagram" className="hover:text-primary transition">
+          <Instagram size={28} />
+        </a>
+        <a href="#" aria-label="Facebook" className="hover:text-primary transition">
+          <Facebook size={28} />
+        </a>
+        <a href="#" aria-label="Twitter" className="hover:text-primary transition">
+          <Twitter size={28} />
+        </a>
+      </div>
+    </section>
+  );
+}
+
+// Final CTA
+function FinalCTA() {
+  return (
+    <section className="py-20 px-5 md:px-8 bg-primary text-white">
+      <div className="max-w-4xl mx-auto text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          Join Us in Making a Difference
+        </h2>
+        <p className="text-lg mb-8 opacity-90">
+          Whether you want to volunteer, donate, or partner with us, there's a way for you to be part of this journey.
+        </p>
+        <div className="flex flex-col md:flex-row justify-center gap-4">
+          <button className="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+            Donate Now
+          </button>
+          <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition">
+            Volunteer
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Footer
+function Footer() {
+  return (
+    <footer id="contact" className="bg-gray-900 text-white py-16 px-5 md:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-4 gap-8 mb-12">
+          <div>
+            <h3 className="font-bold text-lg mb-4">InAmigos Foundation</h3>
+            <p className="text-gray-400">
+              Government licensed, ISO 9001:2015 certified NGO.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-bold text-lg mb-4">Quick Links</h3>
+            <ul className="space-y-2 text-gray-400">
+              <li><a href="#home" className="hover:text-white transition">Home</a></li>
+              <li><a href="#about" className="hover:text-white transition">About</a></li>
+              <li><a href="#projects" className="hover:text-white transition">Projects</a></li>
+              <li><a href="#team" className="hover:text-white transition">Team</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-bold text-lg mb-4">Contact</h3>
+            <ul className="space-y-3 text-gray-400">
+              <li className="flex items-center gap-2">
+                <Mail size={16} /> contact@inamigos.org
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone size={16} /> +91 XXXX XXXX XX
+              </li>
+              <li className="flex items-center gap-2">
+                <MapPin size={16} /> India
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-bold text-lg mb-4">Follow Us</h3>
+            <div className="flex gap-4">
+              <a href="#" className="hover:text-primary transition">
+                <Linkedin size={20} />
+              </a>
+              <a href="#" className="hover:text-primary transition">
+                <Instagram size={20} />
+              </a>
+              <a href="#" className="hover:text-primary transition">
+                <Facebook size={20} />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
+          <p>&copy; 2024 InAmigos Foundation. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
